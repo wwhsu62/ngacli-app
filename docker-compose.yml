@@ -1,0 +1,12 @@
+version: '2'
+services:
+    ngacli-app:
+        build: .
+        image: ngacli:latest
+        container_name: ngacli-app
+        restart: always
+        command: tail -F /var/log/lastlog
+        environment:
+            - PATH=/ngacli-1.0-SNAPSHOT/bin:$PATH
+        volumes:
+            - ${PWD}/ngacli-1.0-SNAPSHOT/etc:/ngacli-1.0-SNAPSHOT/etc
